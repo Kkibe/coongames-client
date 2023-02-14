@@ -2,10 +2,48 @@ import React, {useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 export default function Upload() {
-    const [file, setFile] = useState(null)
-    const handleSubmit = () => {
-        console.log(file)
-    }
+    const [title, setTitle] = useState(null);
+    const [img, setImage] = useState(null);
+    const [file, setFile] = useState(null);
+    const [desc, setDescription] = useState(null);
+    const [categories, setCategories] = useState([]);
+    const [premium, setPremium] = useState(false);
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        const newGame = {
+          title,
+          desc,
+          img,
+          file,
+          categories: categories.length > 0 ? categories : null,
+          premium,
+        };
+  
+        if (file) {
+          const filename = file.name.split(".")[0];
+          newGame.file = filename;
+          if (img) {
+            const data = new FormData();
+            const imgName = Date.now() + img.name;
+            data.append("name", imgName);
+            data.append("img", img);
+            newGame.img = imgName;
+
+            axios.post('http://127.0.0.1:5000/api/upload', uploadFile).then(res => {
+                axios.post('http://127.0.0.1:5000/api/games', newGame).then(res => {
+                  //window.location.replace("/books/" + res.data._id);
+                  console.log(res)
+                }).catch(err => {
+                  console.log(err)
+                })
+              }).catch(err => {
+                console.log(err);
+              })
+            })
+          }
+        }
+      };
   return (
     <div className='upload'>
         <Helmet>
