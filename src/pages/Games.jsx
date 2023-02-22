@@ -15,7 +15,7 @@ export default function Games() {
     url: 'https://gamerpower.p.rapidapi.com/api/giveaways',
     params: {'sort-by': 'value'},
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_GAMEPOWER_API_KEY,
+      'X-RapidAPI-Key': '7015901614mshbeaa572245b6bffp123fd4jsn9b3a74df405d',
       'X-RapidAPI-Host': 'gamerpower.p.rapidapi.com'
     }
   };
@@ -24,14 +24,19 @@ export default function Games() {
     method: 'GET',
     url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
     headers: {
-      'X-RapidAPI-Key': process.env.REACT_APP_FREETOPLAY_API_KEY,
+      'X-RapidAPI-Key': '7015901614mshbeaa572245b6bffp123fd4jsn9b3a74df405d',
       'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
     }
   };
 
+  const coongames = {
+    method: 'GET',
+    url: 'https://coongames-api.onrender.com/api/games'
+  };
+
   useEffect(() => {
     setFetching(true);
-    axios.request(value == 'coongames' ? freeToPlay : gamepower).then(function (response) {
+    axios.request(gamepower/*value == 'freeToPlay' ? freeToPlay : gamepower*/).then(function (response) {
       setGames(response.data);
       setFetching(false);
     }).catch(function (error) {
@@ -51,9 +56,9 @@ export default function Games() {
       <span>{value}</span>
       <select onChange={(e) => setValue(e.target.value)}
         value={value}>
-        <option value="coongames">COONGAMES</option>
-        <option value="marvel">MARVEL</option>
-        <option value="rapid">RAPID</option>
+        <option value="FREE TO PLAY">FREE TO PLAY</option>
+        <option value="GAME POWER">GAME POWER</option>
+        <option value="COONGAMES">COONGAMES</option>
       </select>
     </div>
     <div className="wrapper">

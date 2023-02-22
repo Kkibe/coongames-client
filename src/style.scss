@@ -20,6 +20,7 @@ $white: rgb(242, 243, 242);
 $lite: rgba(220, 250, 250, 0.9);
 $shadow: rgba(0, 0, 0, 0.1);
 $green: #00c441;
+$red:#c23f3f;
 $right-msg-bg: #579ffb;
 $left-msg-bg: #ececec;
 
@@ -424,7 +425,7 @@ html{
     align-items: center;
     justify-content: space-evenly;
 
-    form{
+    section{
       width: 95%;
       max-width: 500px;
       box-shadow: 6px 6px 10px -1px $dark,-6px -6px 10px -1px $dark;
@@ -461,13 +462,24 @@ html{
             position: relative;
 
             label{
-              width: 20px;
-              height: 20px;
+              width: 25px;
+              height: 25px;
               background: $dark;
               position: absolute;
               top: 5px;
               right: -5px;
               border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              i{
+                color: $dark;
+                width: 15px;
+                height: 15px;
+                color: $white;
+                position: absolute;
+                margin: 0px 3px 3px 0;
+              }
             }
 
             img{
@@ -597,7 +609,7 @@ html{
       background: $white;
       color: $grey;
 
-      .fa-xmark{
+      .fa-close{
         cursor: pointer;
       }
     }
@@ -823,12 +835,12 @@ html{
   }
   .profile{
     width: 80%;
-    min-width: 350px;
+    min-width: 340px;
     background: $dark;
     padding: 10px auto;
     color: $white;
     border-radius: 5px;
-    margin: 20px 10px;
+    margin: 10px 10px;
     
     text-align: center;
     box-shadow: 0 10px 20px -10px $shadow;
@@ -837,6 +849,9 @@ html{
     justify-content: center;
     flex-direction: column;
     flex-wrap: wrap;
+    *{
+      margin: 10px 0;
+    }
     .cover-photo{
         background: url(./assets/cover.jpg);
         background-repeat: no-repeat;
@@ -844,6 +859,7 @@ html{
         height: 160px;
         width: 100%;
         border-radius: 5px 5px 0 0;
+        margin: 0;
         .profile-image{
             height: 100px;
             width: 100px;
@@ -854,18 +870,23 @@ html{
             background: $dark;
         }
     }
+
     .profile-name{
         font-size: 25px;
         font-weight: bold;
         margin-left: 27px ;
     }
     .about{
-        margin-top: 35px;
         line-height: 21px;
         color: $white;
     }
-  }
 
+
+    button{
+      background: $red;
+    }
+  }
+  
   .error-page{
     width: 100%;
     min-height: 80vh;
@@ -876,7 +897,7 @@ html{
     font-family: 'Courier New', Courier, monospace;
 
     h1{
-      color: rgb(194, 63, 63);
+      color: $red;
       font-size: 32px;
       span{
         font-size: 24px;
@@ -891,7 +912,7 @@ html{
   }
 
   .error{
-    color: rgb(194, 63, 63);
+    color: $red;
   }
 
   .success{

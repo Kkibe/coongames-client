@@ -17,7 +17,7 @@ export default function Topbar() {
         <NavLink to="/about" style={({ isActive }) => {return {background: isActive ? "#00c441" : ""};}} title='about'>ABOUT</NavLink>
     </div>
     {
-      user && (
+      !user && (
         <div className="btn-group">
           <a href="/login" title='login'><button>LOGIN</button></a>
           <a href="/register" title='register'><button className='register-btn'>REGISTER</button></a>

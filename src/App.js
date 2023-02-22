@@ -1,5 +1,5 @@
-import {useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import {useEffect, useState } from "react";
+import { Route, Routes,Navigate } from "react-router-dom";
 import { BotContext, SourceContext, ThemeContext, UserContext } from "./SourceContext";
 
 import Topbar from "./components/Topbar";
@@ -19,10 +19,25 @@ import ErrorPage from "./pages/ErrorPage";
 import ChatbotImage from "./components/ChatbotImage";
 
 function App() { 
-  const [value, setValue] = useState('coongames');
+  const [value, setValue] = useState('FREE TO PLAY');
   const [theme, setTheme] = useState('Light');
   const [user, setUser]  = useState(null);
   const [botVisible, setBotVisible] = useState('none');
+
+  const ProtectedRoute = ({ children }) => {
+    if (!user) {
+      return <Navigate to="/login" />;
+    }
+    return children
+  };
+
+  useEffect(() => {
+    setUser(JSON.parse( window.localStorage.getItem('coongames-user')) || null);
+  }, [])
+
+  useEffect(() => {
+    console.log(user)
+  }, [user])
   return (
   <SourceContext.Provider value={{value, setValue}} >
     <ThemeContext.Provider value={{theme, setTheme}}>
@@ -35,8 +50,8 @@ function App() {
               <Route path="/games" element={<Games />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/about" element={<About />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/settings" element={<ProtectedRoute><Settings/></ProtectedRoute>}/>
+              <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} /> 
               <Route path="*" element={<ErrorPage />} /> 

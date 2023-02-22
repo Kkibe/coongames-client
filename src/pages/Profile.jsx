@@ -4,7 +4,12 @@ import Image from '../assets/logo.png';
 import { UserContext } from '../SourceContext';
 
 const Profile = () => {
-    const {user}= useContext(UserContext);
+    const {user, setUser}= useContext(UserContext);
+
+    const handleLogout = () => {
+        window.localStorage.removeItem('coongames-user');
+        setUser(null);
+    }
     return (
         <div className='profile'>
         <Helmet>
@@ -14,13 +19,18 @@ const Profile = () => {
           <link rel="coongames" href="/profile" />
         </Helmet>
             <div className="cover-photo">
-                <img src={Image} alt="" className='profile-image'/>
+                <img src={user.others.img ? user.others.img : Image} alt="" className='profile-image'/>
             </div>
-            <div className="profile-name">{/*user.currentUser && user.currentUser.others.username*/}Name</div>
-            <h3>{/*user.currentUser && user.currentUser.others.email*/}email</h3>
+            <div className="profile-name">{user.others.username}</div>
+            <h3>{user.others.email}</h3>
+            <div>SUBSCRIPTION : {user.others.subscription.toUpperCase()}</div>
             <p className="about">
                 User Interface Designer and <br /> fron-end developer
             </p>  
+
+            <button  onClick={handleLogout}>
+                LOGOUT
+            </button>
         </div>
     );
 }

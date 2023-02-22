@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import Image from '../assets/logo.png';
+import BotImage from '../assets/chatbot.png';
 import { BotContext } from '../SourceContext';
 
 export default function Chatbot() {
@@ -14,13 +15,13 @@ export default function Chatbot() {
   return (
 <section className="msger chatbot" style={{display: botVisible}}>
   <header>
-      <i className="fas fa-comment-alt"></i> 
+      <i className="fas fa-comment-alt"></i>  
       <span>Coongames Chat</span>
-      <i className="fas fa-xmark" onClick={() => setBotVisible('none')}></i>
+      <i className="fas fa-close" onClick={() => setBotVisible('none')}>x</i>
   </header>
   <main>
     <div className="msg left-msg">
-      <img src={Image} alt="" />
+      <img src={BotImage} alt="" />
       <div>
         <div className="msg-info">
           <div className="name">BOT</div>
