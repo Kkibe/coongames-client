@@ -7,7 +7,7 @@ import Post from '../components/Post';
 function Blogs() {
     const [posts, setPosts] = useState(null);
     const [fetching, setFetching] = useState(false);
-    const url = 'https://newsapi.org/v2/everything?q=gaming&from=2023-01-07&sortBy=publishedAt&apiKey=2be3aed283704f5a8e1997f82722b394'
+    const url = 'https://newsdata.io/api/1/news?apikey=pub_1237237f365d7ff387104765b2874bb6ca618&q=gaming'
     useEffect(() => {
         setFetching(true);
         axios.request(url).then(function (response) {
