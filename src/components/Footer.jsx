@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from '../assets/logo.png';
+import {NavLink } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -8,29 +9,29 @@ export default function Footer() {
       <section>
           <h3><img src={Icon} alt="" /><div>COONGAMES</div></h3>
           <div className="container">
-              <a href="/" title='healthgen'>HOME</a>
-              <a href="/games" title='books'>PLAY GAMES</a>
-              <a href="/blogs" title='contact'>READ BLOGS</a>
-              <a href="/about" title='contact'>ABOUT US</a>
+              <NavLink to="/" title='healthgen'>HOME</NavLink>
+              <NavLink to="/games" title='books'>PLAY GAMES</NavLink>
+              <NavLink to="/blogs" title='contact'>READ BLOGS</NavLink>
+              <NavLink to="/about" title='contact'>ABOUT US</NavLink>
           </div>
       </section>
       {/*
       <section>
           <h3>HOT GAMES ARCADE</h3>
           <div className="container">
-              <a href="./fruit-ninja/index.html" title='about'>FRUIT NINJA</a>
-              <a href="./cheap-ai-chess/index.html" title='support'>CHESS</a>
-              <a href="./zombie-shooter-game-main/index.html" title='privacy'>ZOMBIE SHOOTER</a>
-              <a href="./rock-paper-scissors-lizard-spock-game/index.html" title='terms'>ROCK & PAPER</a>
+              <NavLink to="./fruit-ninja/index.html" title='about'>FRUIT NINJA</NavLink>
+              <NavLink to="./cheap-ai-chess/index.html" title='support'>CHESS</NavLink>
+              <NavLink to="./zombie-shooter-game-main/index.html" title='privacy'>ZOMBIE SHOOTER</NavLink>
+              <NavLink to="./rock-paper-scissors-lizard-spock-game/index.html" title='terms'>ROCK & PAPER</NavLink>
           </div>
       </section>*/}
       <section>
           <h3>USEFUL LINKS</h3>
           <div className="container">
-              <a href="/login" title='login'>LOGIN</a>
-              <a href="/register" title='register'>REGISTER</a>
-              <a href="/profile" title='profile'>ACCOUNT PROFILE</a>
-              <a href="/settings" title='feedback'>ACCOUNT SETTINGS</a>
+              <NavLink to="/login" title='login'>LOGIN</NavLink>
+              <NavLink to="/register" title='register'>REGISTER</NavLink>
+              <NavLink to="/profile" title='profile'>ACCOUNT PROFILE</NavLink>
+              <NavLink to="/settings" title='feedback'>ACCOUNT SETTINGS</NavLink>
           </div>
       </section>
     </div>
