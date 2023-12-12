@@ -11,7 +11,7 @@ function Blogs() {
     useEffect(() => {
         setFetching(true);
         axios.request(url).then(function (response) {
-          setPosts(response.data.articles.filter(item => item.urlToImage != null));
+          setPosts(response.data.results.filter(item => {return item.image_url != null}));
           setFetching(false);
         }).catch(function (error) {
           console.error(error); 
