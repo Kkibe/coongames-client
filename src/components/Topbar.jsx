@@ -19,8 +19,8 @@ export default function Topbar() {
     {
       !user && (
         <div className="btn-group">
-          <a href="/login" title='login'><button>LOGIN</button></a>
-          <a href="/register" title='register'><button className='register-btn'>REGISTER</button></a>
+          <NavLink to="/login" title='login'><button>LOGIN</button></NavLink>
+          <NavLink to="/register" title='register'><button className='register-btn'>REGISTER</button></NavLink>
         </div>
       )
     }
